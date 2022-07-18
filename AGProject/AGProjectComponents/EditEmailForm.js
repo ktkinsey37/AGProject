@@ -7,17 +7,17 @@ function renderNameForm(){
   console.log("render name form")
 }
 
-export default function App() {
+export default function EditEmailForm() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>Edit Profile</Text>
       <Button
-      onPress={renderNameForm}
+      onPress={() => navigation.navigate('EditProfilePage')}
       title="Learn More"
       color="#841584"
       accessibilityLabel="Learn more about this purple button"/>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 

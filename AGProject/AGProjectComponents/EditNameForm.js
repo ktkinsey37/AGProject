@@ -1,23 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function renderNameForm(){
-  console.log("render name form")
-}
+function handleChange(event) {
+    this.setState({value: event.target.value});
+  }
 
-export default function App() {
+export default EditNameForm = ({ navigation, route }) => {
+
+    let firstName = route.params.firstName
+
   return (
-    <View style={styles.container}>
-      <Text>Edit Profile</Text>
+    <SafeAreaView style={styles.container}>
+      <Text>This is the name form!</Text>
+      <form onSubmit={() => console.log("hw")}>
+      <label>
+        <Text>Name: {firstName}</Text>
+        
+      </label>
+
+    </form>
       <Button
-      onPress={renderNameForm}
-      title="Learn More"
+      onPress={() => navigation.navigate('EditProfilePage')}
+      title="Update Name!"
       color="#841584"
       accessibilityLabel="Learn more about this purple button"/>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -29,3 +39,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+// <input type="text" value={route.params.firstName} onChange={handleChange} />
+// <input type="submit" value="Submit" />

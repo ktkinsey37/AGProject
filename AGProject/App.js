@@ -2,6 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import EditProfilePage from './AGProjectComponents/EditProfilePage';
+import EditNameForm from './AGProjectComponents/EditNameForm';
+
+const Stack = createNativeStackNavigator();
 
 function renderNameForm(){
   console.log("render name form")
@@ -12,18 +16,19 @@ function returnToEditProfilePage(){
 }
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Edit Profile</Text>
-      <Button
-      onPress={renderNameForm}
-      title="Learn More"
-      color="#841584"
-      accessibilityLabel="Learn more about this purple button"/>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="EditProfilePage"
+            component={EditProfilePage}
+            options={{ title: 'Edit Profile Page' }}
+          />
+          <Stack.Screen name="EditNameForm" component={EditNameForm} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  };
 
 const styles = StyleSheet.create({
   container: {
@@ -33,3 +38,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+// <Stack.Screen name="EditNameForm" component={EditNameForm} />
