@@ -4,6 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import EditProfilePage from './AGProjectComponents/EditProfilePage';
 import EditNameForm from './AGProjectComponents/EditNameForm';
+import EditPhoneForm from './AGProjectComponents/EditPhoneForm';
+import EditEmailForm from './AGProjectComponents/EditEmailForm';
+import EditBioForm from './AGProjectComponents/EditBioForm';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +28,9 @@ export default function App() {
             options={{ title: 'Edit Profile Page' }}
           />
           <Stack.Screen name="EditNameForm" component={EditNameForm} />
+          <Stack.Screen name="EditPhoneForm" component={EditPhoneForm} />
+          <Stack.Screen name="EditEmailForm" component={EditEmailForm} />
+          <Stack.Screen name="EditBioForm" component={EditBioForm} />
         </Stack.Navigator>
       </NavigationContainer>
     );

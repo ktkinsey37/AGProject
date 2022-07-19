@@ -8,31 +8,33 @@ function handleChange(event) {
     this.setState({value: event.target.value});
   }
 
-export default EditEmailForm = ({ navigation, route }) => {
+export default EditBioForm = ({ navigation, route }) => {
 
-    let email = route.params.email
-    const setEmail = route.params.setEmail
+    let bio = route.params.bio
+    const setBio = route.params.setBio
 
   return (
     <SafeAreaView style={styles.container}>
 
-        <Text>Email:</Text>
+      <Text>This is the bio form!</Text>
+
+        <Text>What type of passenger are you?</Text>
         
         <Formik
-        initialValues={{ email: email }}
+        initialValues={{ bio: bio }}
         onSubmit={values => {console.log(values)
-               setEmail(values.email)
+               setBio(values.bio)
                navigation.navigate('EditProfilePage')
         }}
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
           <View>
             <TextInput
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-              value={values.email}
+              onChangeText={handleChange('bio')}
+              onBlur={handleBlur('bio')}
+              value={values.bio}
             />
-            <Button onPress={handleSubmit} title="Submit" />
+            <Button onPress={handleSubmit} title="Update" />
           </View>
         )}
       </Formik>
@@ -51,6 +53,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+// <input type="text" value={route.params.firstName} onChange={handleChange} />
+// <input type="submit" value="Submit" />
+
 
 
 <Button

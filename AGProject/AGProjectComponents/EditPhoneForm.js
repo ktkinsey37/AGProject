@@ -8,29 +8,29 @@ function handleChange(event) {
     this.setState({value: event.target.value});
   }
 
-export default EditEmailForm = ({ navigation, route }) => {
+export default EditPhoneForm = ({ navigation, route }) => {
 
-    let email = route.params.email
-    const setEmail = route.params.setEmail
+    let phoneNumber = route.params.phoneNumber
+    const setPhoneNumber = route.params.setPhoneNumber
 
   return (
     <SafeAreaView style={styles.container}>
 
-        <Text>Email:</Text>
+        <Text>Phone: {phoneNumber}</Text>
         
         <Formik
-        initialValues={{ email: email }}
+        initialValues={{ phoneNumber: phoneNumber }}
         onSubmit={values => {console.log(values)
-               setEmail(values.email)
+               setPhoneNumber(values.phoneNumber)
                navigation.navigate('EditProfilePage')
         }}
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
           <View>
             <TextInput
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-              value={values.email}
+              onChangeText={handleChange('phoneNumber')}
+              onBlur={handleBlur('phoneNumber')}
+              value={values.phoneNumber}
             />
             <Button onPress={handleSubmit} title="Submit" />
           </View>
@@ -51,6 +51,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+// <input type="text" value={route.params.firstName} onChange={handleChange} />
+// <input type="submit" value="Submit" />
+
 
 
 <Button
