@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, Button, LogBox } from 'react-native';
+import { StyleSheet, Text, Image, View, SafeAreaView, Button, LogBox, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
@@ -24,13 +24,19 @@ export default EditProfilePage = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
     <Text>Edit Profile Page</Text>
 
+    <Pressable
+        style={styles.profileItemTextContainer}
+        onPress={() => {console.log("navigating>"); navigation.navigate('EditNameForm', {firstName, lastName, setFirstName, setLastName})}}>
+        <View>
+            <Text style={styles.titleText}>Name</Text>
+            <Text style={styles.profileItemText}>{firstName} {lastName}</Text>
+        </View>
 
-      <Text>{firstName} {lastName}</Text>
-      <Button
-      onPress={() => {console.log("navigating>"); navigation.navigate('EditNameForm', {firstName, lastName, setFirstName, setLastName})}}
-      title="Edit Name"
-      color="#841584"
-      accessibilityLabel="Learn more about this purple button"/>
+        <Image
+        style={styles.editProfileChevron}
+        source={require('../assets/chevron.png')}
+      />
+    </Pressable>
 
       <Text>{phoneNumber}</Text>
       <Button
@@ -67,4 +73,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  titleText: {
+    color: "silver",
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignSelf: 'flex-start',
+    width: 150,
+    padding: 5
+  },
+  profileItemText: {
+    color: "black",
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignSelf: 'flex-start',
+    padding: 5
+  },
+  profileItemTextContainer: {
+    width: 350,
+    flexDirection: "row",
+    height: 50,
+    justifyContent: 'space-between'
+  },
+  editProfileChevron: {
+    width: 40,
+    height: 40,
+    alignSelf: 'flex-end',
+    padding: 5
+  }
 });
