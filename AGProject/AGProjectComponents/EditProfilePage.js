@@ -31,34 +31,50 @@ export default EditProfilePage = ({ navigation }) => {
             <Text style={styles.titleText}>Name</Text>
             <Text style={styles.profileItemText}>{firstName} {lastName}</Text>
         </View>
-
         <Image
         style={styles.editProfileChevron}
         source={require('../assets/chevron.png')}
       />
     </Pressable>
 
-      <Text>{phoneNumber}</Text>
-      <Button
-      onPress={() => {console.log("navigating>"); navigation.navigate('EditPhoneForm', {phoneNumber, setPhoneNumber})}}
-      title="Edit Phone"
-      color="#841584"
-      accessibilityLabel="Learn more about this purple button"/>
+    <Pressable
+        style={styles.profileItemTextContainer}
+        onPress={() => {console.log("navigating>"); navigation.navigate('EditPhoneForm', {phoneNumber, setPhoneNumber})}}>
+        <View>
+            <Text style={styles.titleText}>Phone</Text>
+            <Text style={styles.profileItemText}>{phoneNumber}</Text>
+        </View>
+        <Image
+        style={styles.editProfileChevron}
+        source={require('../assets/chevron.png')}
+    />
+    </Pressable>
 
+    <Pressable
+        style={styles.profileItemTextContainer}
+        onPress={() => {console.log("navigating>"); navigation.navigate('EditEmailForm', {email, setEmail})}}>
+        <View>
+            <Text style={styles.titleText}>Email</Text>
+            <Text style={styles.profileItemText}>{email}</Text>
+        </View>
+        <Image
+        style={styles.editProfileChevron}
+        source={require('../assets/chevron.png')}
+    />
+    </Pressable>
 
-      <Text>{email}</Text>
-      <Button
-      onPress={() => {console.log("navigating>"); navigation.navigate('EditEmailForm', {email, setEmail})}}
-      title="Edit Email"
-      color="#841584"
-      accessibilityLabel="Learn more about this purple button"/>
-
-      <Text>{bio}</Text>
-      <Button
-      onPress={() => {console.log("navigating>"); navigation.navigate('EditBioForm', {bio, setBio})}}
-      title="Edit Bio"
-      color="#841584"
-      accessibilityLabel="Learn more about this purple button"/>
+    <Pressable
+        style={styles.profileItemTextContainer}
+        onPress={() => {console.log("navigating>"); navigation.navigate('EditBioForm', {bio, setBio})}}>
+        <View>
+            <Text style={styles.titleText}>Tell us about yourself</Text>
+            <Text style={styles.profileItemText}>{bio}</Text>
+        </View>
+        <Image
+        style={styles.editProfileChevron}
+        source={require('../assets/chevron.png')}
+    />
+    </Pressable>
 
 
       <StatusBar style="auto" />
@@ -78,7 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     alignSelf: 'flex-start',
-    width: 150,
+    width: 250,
     padding: 5
   },
   profileItemText: {
@@ -86,13 +102,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     alignSelf: 'flex-start',
-    padding: 5
+    padding: 5,
+    width: 250
   },
   profileItemTextContainer: {
     width: 350,
     flexDirection: "row",
     height: 50,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    borderBottomWidth: 2,
+    borderBottomColor: "silver",
+    marginBottom: 30
   },
   editProfileChevron: {
     width: 40,
