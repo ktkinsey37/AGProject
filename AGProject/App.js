@@ -7,6 +7,7 @@ import EditNameForm from './AGProjectComponents/EditNameForm';
 import EditPhoneForm from './AGProjectComponents/EditPhoneForm';
 import EditEmailForm from './AGProjectComponents/EditEmailForm';
 import EditBioForm from './AGProjectComponents/EditBioForm';
+import EditImageForm from './AGProjectComponents/EditImageForm'
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,7 @@ export default function App() {
           <Stack.Screen name="EditPhoneForm" component={EditPhoneForm} />
           <Stack.Screen name="EditEmailForm" component={EditEmailForm} />
           <Stack.Screen name="EditBioForm" component={EditBioForm} />
+          <Stack.Screen name="EditImageForm" component={EditImageForm} />
         </Stack.Navigator>
       </NavigationContainer>
     );
