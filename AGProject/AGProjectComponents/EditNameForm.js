@@ -1,12 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TextInput, Text, View, SafeAreaView, Button } from 'react-native';
+import { StyleSheet, TextInput, Pressable, Text, View, SafeAreaView, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik'
-
-function handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+// import './EditNameForm.css'
 
 export default EditNameForm = ({ navigation, route }) => {
 
@@ -17,38 +14,45 @@ export default EditNameForm = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.formContainer}>
+                <Text>What's your name?</Text>
+                
+                <Formik
+                initialValues={{ firstName: firstName, lastName: lastName }}
+                onSubmit={values => {console.log(values)
+                    setFirstName(values.firstName)
+                    setLastName(values.lastName)
+                    navigation.navigate('EditProfilePage')
+                }}>
 
-      <Text>This is the name form!</Text>
+                {({ handleChange, handleBlur, handleSubmit, values }) => (
+                <View>
+                    <TextInput
+                    onChangeText={handleChange('firstName')}
+                    onBlur={handleBlur('firstName')}
+                    value={values.firstName}
+                    style={styles.firstNameBox}
+                    />
+                    <TextInput
+                    onChangeText={handleChange('lastName')}
+                    onBlur={handleBlur('lastName')}
+                    value={values.lastName}
+                />
 
-        <Text>Name: {firstName} {lastName}</Text>
-        
-        <Formik
-        initialValues={{ firstName: firstName, lastName: lastName }}
-        onSubmit={values => {console.log(values)
-               setFirstName(values.firstName)
-               setLastName(values.lastName)
-               navigation.navigate('EditProfilePage')
-        }}
-      >
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
-          <View>
-            <TextInput
-              onChangeText={handleChange('firstName')}
-              onBlur={handleBlur('firstName')}
-              value={values.firstName}
-            />
-            <TextInput
-            onChangeText={handleChange('lastName')}
-            onBlur={handleBlur('lastName')}
-            value={values.lastName}
-          />
-            <Button onPress={handleSubmit} title="Submit" />
-          </View>
-        )}
-      </Formik>
+                        <Pressable onPress={handleSubmit}
+                        style={styles.updateButton}>
+                            <Text style={styles.updateButtonText}>Update</Text>
+                        </Pressable>
+
+                </View>
+                )}
+            </Formik>
 
 
-      <StatusBar style="auto" />
+            <StatusBar style="auto" />
+        </SafeAreaView>
+
+
     </SafeAreaView>
   );
 }
@@ -56,22 +60,40 @@ export default EditNameForm = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  formContainer: {
+    flex: .5,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  updateButton: {
+    height: 50,
+    width: 300,
+    color: 'white',
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignSelf: 'flex-end'
+  },
+  updateButtonText: {
+    color: 'white',
+    fontSize: 16,
+    alignSelf: 'center'
+  },
+  firstNameBox: {
+    width: 100,
+    borderWidth: 2,
+    height: 35
+  },
+  lastNameBox: {
+    width: 100,
+    borderWidth: 2,
+    height: 35
+  },
+  nameBoxesContainer: {
+    
+  }
 });
-
-// <input type="text" value={route.params.firstName} onChange={handleChange} />
-// <input type="submit" value="Submit" />
-
-
-
-<Button
-onPress={() => {
-  setFirstName(e.target.firstName)
-  setLastName()
-  navigation.navigate('EditProfilePage')}}
-title="Update Name!"
-color="#841584"
-accessibilityLabel="Learn more about this purple button"/>

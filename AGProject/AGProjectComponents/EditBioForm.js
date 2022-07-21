@@ -4,10 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik'
 
-function handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
 export default EditBioForm = ({ navigation, route }) => {
 
     let bio = route.params.bio
@@ -33,6 +29,7 @@ export default EditBioForm = ({ navigation, route }) => {
               onChangeText={handleChange('bio')}
               onBlur={handleBlur('bio')}
               value={values.bio}
+              style={styles.bioTextInput}
             />
             <Button onPress={handleSubmit} title="Update" />
           </View>
@@ -52,6 +49,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  bioTextInput: {
+    multiline: true,
+    numberOfLines: 5,
+  }
 });
 
 // <input type="text" value={route.params.firstName} onChange={handleChange} />

@@ -4,10 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik'
 
-function handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
 export default EditPhoneForm = ({ navigation, route }) => {
 
     let phoneNumber = route.params.phoneNumber
