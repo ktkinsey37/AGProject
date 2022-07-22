@@ -39,8 +39,8 @@ export default EditEmailForm = ({ navigation, route }) => {
         <View style={styles.emailBoxContainer}>
 
             <TextInput
-            onChangeText={handleChange('emailNumber')}
-            onBlur={handleBlur('emailNumber')}
+            onChangeText={handleChange('email')}
+            onBlur={handleBlur('email')}
             value={values.email}
             style={styles.emailBox}
             />
