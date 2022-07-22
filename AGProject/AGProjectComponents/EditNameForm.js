@@ -14,10 +14,10 @@ export default EditNameForm = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-        <SafeAreaView style={styles.formContainer}>
-                <Text>What's your name?</Text>
+        <View>
+                <Text style={styles.formTitleText}>What's your name?</Text>
                 
-                <Formik
+                <Formik style={styles.form}
                 initialValues={{ firstName: firstName, lastName: lastName }}
                 onSubmit={values => {console.log(values)
                     setFirstName(values.firstName)
@@ -27,17 +27,28 @@ export default EditNameForm = ({ navigation, route }) => {
 
                 {({ handleChange, handleBlur, handleSubmit, values }) => (
                 <View>
-                    <TextInput
-                    onChangeText={handleChange('firstName')}
-                    onBlur={handleBlur('firstName')}
-                    value={values.firstName}
-                    style={styles.firstNameBox}
-                    />
-                    <TextInput
-                    onChangeText={handleChange('lastName')}
-                    onBlur={handleBlur('lastName')}
-                    value={values.lastName}
-                />
+
+                    <View style={styles.nameBoxesContainer}>
+                        <Text style={styles.firstNamelabel}>First Name</Text>
+                        <Text style={styles.lastNamelabel}>Last Name</Text>
+                    </View>
+                    <View style={styles.nameBoxesContainer}>
+
+                        <TextInput
+                        onChangeText={handleChange('firstName')}
+                        onBlur={handleBlur('firstName')}
+                        value={values.firstName}
+                        style={styles.firstNameBox}
+                        />
+
+                        <TextInput
+                        onChangeText={handleChange('lastName')}
+                        onBlur={handleBlur('lastName')}
+                        value={values.lastName}
+                        style={styles.lastNameBox}
+                        />
+                    </View>
+
 
                         <Pressable onPress={handleSubmit}
                         style={styles.updateButton}>
@@ -50,7 +61,7 @@ export default EditNameForm = ({ navigation, route }) => {
 
 
             <StatusBar style="auto" />
-        </SafeAreaView>
+        </View>
 
 
     </SafeAreaView>
@@ -62,38 +73,91 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'center',
   },
   formContainer: {
-    flex: .5,
+    flex: .6,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between'
   },
   updateButton: {
-    height: 50,
-    width: 300,
+    marginTop: 200,
+    height: 70,
+    width: 320,
     color: 'white',
     backgroundColor: 'black',
     justifyContent: 'center',
     alignSelf: 'flex-end'
   },
   updateButtonText: {
+    fontWeight: 'bold',
     color: 'white',
     fontSize: 16,
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   firstNameBox: {
-    width: 100,
-    borderWidth: 2,
-    height: 35
+    paddingBottom: 10,
+    paddingHorizontal: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    width: 150,
+    borderBottomWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    height: 40,
+    borderColor: 'silver',
   },
   lastNameBox: {
-    width: 100,
-    borderWidth: 2,
-    height: 35
+    paddingBottom: 10,
+    paddingHorizontal: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    width: 150,
+    borderBottomWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    height: 40,
+    borderColor: 'silver'
   },
   nameBoxesContainer: {
-    
-  }
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  formTitleText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: 75,
+    marginBottom: 50
+  },
+  firstNamelabel: {
+    paddingTop: 15,
+    paddingHorizontal: 10,
+    color: 'silver',
+    fontSize: 16,
+    fontWeight: 'bold',
+    width: 150,
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    height: 40,
+    borderColor: 'silver'
+  },
+  lastNamelabel: {
+    paddingTop: 15,
+    paddingHorizontal: 10,
+    color: 'silver',
+    fontSize: 16,
+    fontWeight: 'bold',
+    width: 150,
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    height: 40,
+    borderColor: 'silver'
+  },
+  nameTitlesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignSelf: 'flex-start',
+  },
 });
