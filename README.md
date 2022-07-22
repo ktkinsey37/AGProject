@@ -40,3 +40,5 @@ Approachable Geeks Edit Profile Project
 * https://www.flaticon.com/free-icons/edit
 
 * https://st2.depositphotos.com/2931363/6263/i/600/depositphotos_62630621-stock-photo-young-man-making-selfie.jpg
+
+* https://www.flaticon.com/free-icon/left-arrow_109618
