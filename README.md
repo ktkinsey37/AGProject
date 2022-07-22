@@ -31,7 +31,9 @@ Approachable Geeks Edit Profile Project
 
 5) Install Expo Go on mobile device
 
-6) Scan QR code with mobile device camera (Expo app)
+6) Connect mobile device to wireless network Expo is running on
+
+7) Scan QR code with mobile device camera (Expo app)
 
 ## Attribution
 
@@ -40,3 +42,7 @@ Approachable Geeks Edit Profile Project
 * https://www.flaticon.com/free-icons/edit
 
 * https://st2.depositphotos.com/2931363/6263/i/600/depositphotos_62630621-stock-photo-young-man-making-selfie.jpg
+
+* https://www.flaticon.com/free-icon/left-arrow_109618
+
+* https://media.istockphoto.com/photos/beautiful-woman-wearing-red-tshirt-make-selfie-by-camera-over-white-picture-id1175208814
