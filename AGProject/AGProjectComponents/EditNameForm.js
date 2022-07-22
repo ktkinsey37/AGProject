@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   formTitleText: {
+    width: 320,
     fontSize: 30,
     fontWeight: 'bold',
     marginTop: 75,

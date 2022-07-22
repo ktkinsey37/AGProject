@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TextInput, Text, View, SafeAreaView, Button } from 'react-native';
+import { StyleSheet, TextInput, Pressable, Text, View, SafeAreaView, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik'
@@ -12,24 +12,40 @@ export default EditPhoneForm = ({ navigation, route }) => {
   return (
     <SafeAreaView style={styles.container}>
 
-        <Text>Phone: {phoneNumber}</Text>
-        
-        <Formik
-        initialValues={{ phoneNumber: phoneNumber }}
-        onSubmit={values => {console.log(values)
-               setPhoneNumber(values.phoneNumber)
-               navigation.navigate('EditProfilePage')
-        }}
-      >
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
-          <View>
+
+    <Text style={styles.formTitleText}>What's your phone number?</Text>
+    
+    <Formik style={styles.form}
+    initialValues={{ phoneNumber: phoneNumber }}
+    onSubmit={values => {console.log(values)
+        setPhoneNumber(values.phoneNumber)
+        navigation.navigate('EditProfilePage')
+    }}>
+
+    {({ handleChange, handleBlur, handleSubmit, values }) => (
+    <View>
+
+        <View style={styles.phoneBoxContainer}>
+            <Text style={styles.phonelabel}>Your phone number</Text>
+        </View>
+        <View style={styles.phoneBoxContainer}>
+
             <TextInput
-              onChangeText={handleChange('phoneNumber')}
-              onBlur={handleBlur('phoneNumber')}
-              value={values.phoneNumber}
+            onChangeText={handleChange('phoneNumber')}
+            onBlur={handleBlur('phoneNumber')}
+            value={values.phoneNumber}
+            style={styles.phoneBox}
             />
-            <Button onPress={handleSubmit} title="Submit" />
-          </View>
+
+        </View>
+
+
+            <Pressable onPress={handleSubmit}
+            style={styles.updateButton}>
+                <Text style={styles.updateButtonText}>Update</Text>
+            </Pressable>
+
+    </View>
         )}
       </Formik>
 
@@ -44,20 +60,67 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
+  },
+  formContainer: {
+    flex: .6,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  updateButton: {
+    marginTop: 200,
+    height: 70,
+    width: 320,
+    color: 'white',
+    backgroundColor: 'black',
     justifyContent: 'center',
+    alignSelf: 'flex-end'
+  },
+  updateButtonText: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 16,
+    alignSelf: 'center',
+  },
+  phoneBox: {
+    paddingBottom: 10,
+    paddingHorizontal: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    width: 320,
+    borderBottomWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    height: 40,
+    borderColor: 'silver',
+  },
+  phoneBoxContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  formTitleText: {
+    width: 320,
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: 75,
+    marginBottom: 50
+  },
+  phonelabel: {
+    paddingTop: 15,
+    paddingHorizontal: 10,
+    color: 'silver',
+    fontSize: 16,
+    fontWeight: 'bold',
+    width: 320,
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    height: 40,
+    borderColor: 'silver'
+  },
+  phoneTitleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignSelf: 'flex-start',
   },
 });
-
-// <input type="text" value={route.params.firstName} onChange={handleChange} />
-// <input type="submit" value="Submit" />
-
-
-
-<Button
-onPress={() => {
-  setFirstName(e.target.firstName)
-  setLastName()
-  navigation.navigate('EditProfilePage')}}
-title="Update Name!"
-color="#841584"
-accessibilityLabel="Learn more about this purple button"/>

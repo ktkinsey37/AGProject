@@ -7,6 +7,7 @@ import ImageOverlay from 'react-native-image-overlay';
 
 LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state',
+    "ViewPropTypes will be removed",
   ]);
 
 function renderNameForm(){
@@ -28,7 +29,7 @@ export default EditProfilePage = ({ navigation }) => {
 
 
     <Pressable
-    onPress={() => {console.log("navigating>"); navigation.navigate('EditImageForm', {})}}>
+    onPress={() => { navigation.navigate('EditImageForm', {})}}>
     <Image style={styles.profilePictureEditIcon}
     source={require('../assets/edit.png')}
     />
@@ -41,7 +42,7 @@ export default EditProfilePage = ({ navigation }) => {
 
     <Pressable
         style={styles.profileItemTextContainer}
-        onPress={() => {console.log("navigating>"); navigation.navigate('EditNameForm', {firstName, lastName, setFirstName, setLastName})}}>
+        onPress={() => { navigation.navigate('EditNameForm', {firstName, lastName, setFirstName, setLastName})}}>
         <View>
             <Text style={styles.titleText}>Name</Text>
             <Text style={styles.profileItemText}>{firstName} {lastName}</Text>
@@ -57,7 +58,7 @@ export default EditProfilePage = ({ navigation }) => {
 
     <Pressable
         style={styles.profileItemTextContainer}
-        onPress={() => {console.log("navigating>"); navigation.navigate('EditPhoneForm', {phoneNumber, setPhoneNumber})}}>
+        onPress={() => { navigation.navigate('EditPhoneForm', {phoneNumber, setPhoneNumber})}}>
         <View>
             <Text style={styles.titleText}>Phone</Text>
             <Text style={styles.profileItemText}>{phoneNumber}</Text>
@@ -73,7 +74,7 @@ export default EditProfilePage = ({ navigation }) => {
 
     <Pressable
         style={styles.profileItemTextContainer}
-        onPress={() => {console.log("navigating>"); navigation.navigate('EditEmailForm', {email, setEmail})}}>
+        onPress={() => { navigation.navigate('EditEmailForm', {email, setEmail})}}>
         <View>
             <Text style={styles.titleText}>Email</Text>
             <Text style={styles.profileItemText}>{email}</Text>
@@ -89,7 +90,7 @@ export default EditProfilePage = ({ navigation }) => {
 
     <Pressable
         style={styles.profileBioTextContainer}
-        onPress={() => {console.log("navigating>"); navigation.navigate('EditBioForm', {bio, setBio})}}>
+        onPress={() => { navigation.navigate('EditBioForm', {bio, setBio})}}>
         <View>
             <Text style={styles.titleText}>Tell us about yourself</Text>
             <Text style={styles.profileItemText}>{bio}</Text>
