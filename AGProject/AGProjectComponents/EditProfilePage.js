@@ -4,15 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import ImageOverlay from 'react-native-image-overlay';
+import EditImageForm from "./EditImageForm"
 
 LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state',
     "ViewPropTypes will be removed",
   ]);
-
-function renderNameForm(){
-    navigation.navigate('EditNameForm')
-}
 
 export default EditProfilePage = ({ navigation }) => {
 
@@ -34,7 +31,7 @@ export default EditProfilePage = ({ navigation }) => {
     source={require('../assets/edit.png')}
     />
         <Image
-        source={require('../assets/selfie.jpg')}
+        source={require("../assets/selfie.jpg")}
         style={styles.profilePicture}
         />
     </Pressable>

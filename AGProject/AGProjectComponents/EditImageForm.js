@@ -1,37 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TextInput, Text, View, SafeAreaView, Button } from 'react-native';
+import { StyleSheet, TextInput, Text, View, SafeAreaView, Button, Pressable, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Formik } from 'formik'
 
-export default EditPhoneForm = ({ navigation, route }) => {
+export default EditImageForm = ({ navigation, route }) => {
 
-    let phoneNumber = route.params.phoneNumber
-    const setPhoneNumber = route.params.setPhoneNumber
 
   return (
     <SafeAreaView style={styles.container}>
 
-        <Text>Phone: {phoneNumber}</Text>
-        
-        <Formik
-        initialValues={{ phoneNumber: phoneNumber }}
-        onSubmit={values => {console.log(values)
-               setPhoneNumber(values.phoneNumber)
-               navigation.navigate('EditProfilePage')
-        }}
-      >
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
-          <View>
-            <TextInput
-              onChangeText={handleChange('phoneNumber')}
-              onBlur={handleBlur('phoneNumber')}
-              value={values.phoneNumber}
-            />
-            <Button onPress={handleSubmit} title="Submit" />
-          </View>
-        )}
-      </Formik>
+    <Pressable
+    style={styles.backArrow}
+    onPress={() => { navigation.navigate('EditProfilePage')}}>
+    <Image
+    style={styles.backArrow}
+    source={require('../assets/backArrow.png')}
+/>
+</Pressable>
+
+    <Text style={styles.formTitleText}>Upload a photo of yourself:</Text>
+    
+
+
+
+    <Image
+    source={require("../assets/selfie2.jpg")}
+    style={styles.uploadPicture}
+    />
+
+
+
+
+    <Pressable onPress={() => { navigation.navigate('EditProfilePage')}}
+    style={styles.updateButton}>
+        <Text style={styles.updateButtonText}>Update</Text>
+    </Pressable>
+
 
 
       <StatusBar style="auto" />
@@ -44,20 +48,77 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
+  },
+  uploadPicture: {
+    width: 320,
+    height: 320
+  },
+  formContainer: {
+    flex: .6,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  backArrow: {
+    position: 'absolute',
+    top: 5,
+    right: 185,
+    width: 30,
+    height: 30
+  },
+  updateButton: {
+    marginTop: 20,
+    height: 70,
+    width: 320,
+    color: 'white',
+    backgroundColor: 'black',
     justifyContent: 'center',
   },
+  updateButtonText: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 16,
+    alignSelf: 'center',
+  },
+  phoneBox: {
+    paddingBottom: 10,
+    paddingHorizontal: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    width: 320,
+    borderBottomWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    height: 40,
+    borderColor: 'silver',
+  },
+  phoneBoxContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  formTitleText: {
+    width: 370,
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: 75,
+    marginBottom: 50
+  },
+  phonelabel: {
+    paddingTop: 15,
+    paddingHorizontal: 10,
+    color: 'silver',
+    fontSize: 16,
+    fontWeight: 'bold',
+    width: 320,
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    height: 40,
+    borderColor: 'silver'
+  },
+  phoneTitleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignSelf: 'flex-start',
+  },
 });
-
-// <input type="text" value={route.params.firstName} onChange={handleChange} />
-// <input type="submit" value="Submit" />
-
-
-
-<Button
-onPress={() => {
-  setFirstName(e.target.firstName)
-  setLastName()
-  navigation.navigate('EditProfilePage')}}
-title="Update Name!"
-color="#841584"
-accessibilityLabel="Learn more about this purple button"/>

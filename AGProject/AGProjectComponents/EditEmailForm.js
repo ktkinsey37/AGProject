@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TextInput, Pressable, Text, View, SafeAreaView, Button } from 'react-native';
+import { StyleSheet, TextInput, Pressable, Text, View, SafeAreaView, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Formik } from 'formik'
@@ -12,6 +12,14 @@ export default EditEmailForm = ({ navigation, route }) => {
   return (
     <SafeAreaView style={styles.container}>
 
+    <Pressable
+        style={styles.backArrow}
+        onPress={() => { navigation.navigate('EditProfilePage')}}>
+        <Image
+        style={styles.backArrow}
+        source={require('../assets/backArrow.png')}
+    />
+    </Pressable>
 
     <Text style={styles.formTitleText}>What's your email?</Text>
     
@@ -61,6 +69,13 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
     },
+    backArrow: {
+        position: 'absolute',
+        top: 5,
+        right: 185,
+        width: 30,
+        height: 30
+      },
     formContainer: {
       flex: .6,
       display: 'flex',

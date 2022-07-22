@@ -11,14 +11,6 @@ import EditImageForm from './AGProjectComponents/EditImageForm'
 
 const Stack = createNativeStackNavigator();
 
-function renderNameForm(){
-  console.log("render name form")
-}
-
-function returnToEditProfilePage(){
-  console.log("return to profile page")
-}
-
 export default function App() {
     return (
       <NavigationContainer>
